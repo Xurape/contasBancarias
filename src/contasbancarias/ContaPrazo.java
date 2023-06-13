@@ -2,54 +2,46 @@
 package contasbancarias;
 
 public class ContaPrazo extends Conta {
-    // variaveis de instancia
-    private int dias;
-    private double juros;
+    private int prazo;
+    private double taxaJuro;
 
-    // constrtor sem parametros
     public ContaPrazo() {
-        dias = 0;
-        juros = 0.0;
+        super();
+        this.prazo = 0;
+        this.taxaJuro = 0.0;
     }
 
-    // construtor com parametros
-    public ContaPrazo(int dias, double juros, int numero, String titular, double saldo) {
-        super(numero, titular, saldo);
-        this.dias = 0;
-        this.juros = 0.0;
+    public ContaPrazo(int numeroConta, String nomeTitular, double saldo, int prazo, double taxaJuro) {
+        super(numeroConta, nomeTitular, saldo);
+        this.prazo = prazo;
+        this.taxaJuro = taxaJuro;
     }
 
-    // metodos de acesso static
-    public int getDias() {
-        return dias;
+    // Métodos de acesso
+    public int getPrazo() {
+        return prazo;
     }
 
-    public void setDias(int dias) {
-        this.dias = dias;
+    public void setPrazo(int prazo) {
+        this.prazo = prazo;
     }
 
-    public double getJuros() {
-        return juros;
+    public double getTaxaJuro() {
+        return taxaJuro;
     }
 
-    public void setJuros(double juros) {
-        this.juros = juros;
+    public void setTaxaJuro(double taxaJuro) {
+        this.taxaJuro = taxaJuro;
     }
-
-    // sobrecarga do metodo toString
+    
+    // Sobrecarga do método toString()
     @Override
     public String toString() {
-        return "" + dias + "," + juros + "\n";
+        return super.toString() + "\nPrazo: " + prazo + " dias" + "\nTaxa de Juro: " + taxaJuro;
     }
 
-    @Override
-    public void print() {
-        super.print();
-        System.out.println("Dias : " + dias);
-        System.out.println("Juros: " + juros);
+    // Método para verificar se duas contas a prazo possuem a mesma taxa
+    public boolean mesmaTaxa(ContaPrazo outraConta) {
+        return this.taxaJuro == outraConta.getTaxaJuro();
     }
-    // public boolean sameJuros (ContaPrazo A2){
-    // return juros.equals(A2.juros);
-    // }
-
 }

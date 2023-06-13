@@ -2,45 +2,52 @@
 package contasbancarias;
 
 public class Conta {
-    // variaveis de instancia
-    private int numero;
-    private String titular;
+    private int numeroConta;
+    private String nomeTitular;
     private double saldo;
 
-    // variavel da classe
     private static String nomeDoBanco;
 
-    // construtor sem parametros
     public Conta() {
-        numero = 0;
-        titular = "";
-        saldo = 0.0;
+        this.numeroConta = 0;
+        this.nomeTitular = null;
+        this.saldo = 0.0;
         nomeDoBanco = "BCP";
     }
 
-    // construtor com parametros
-    public Conta(int numero, String titular, double saldo) {
-        this.numero = numero;
-        this.titular = titular;
+    public Conta(int numeroConta, String nomeTitular, double saldo) {
+        this.numeroConta = numeroConta;
+        this.nomeTitular = nomeTitular;
         this.saldo = saldo;
-        nomeDoBanco = "BCP";
     }
-    // metodos de acesso static
 
     public int getNumero() {
-        return numero;
+        return numeroConta;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setNumero(int numeroConta) {
+        this.numeroConta = numeroConta;
+    }
+
+    public void setNomeTitular(String nomeTitular) {
+        this.nomeTitular = nomeTitular;
     }
 
     public String getTitular() {
-        return titular;
+        return nomeTitular;
     }
 
     public void setTitular(String titular) {
-        this.titular = titular;
+        this.nomeTitular = titular;
+    }
+
+    // Métodos de acesso
+    public int getNumeroConta() {
+        return numeroConta;
+    }
+
+    public String getNomeTitular() {
+        return nomeTitular;
     }
 
     public double getSaldo() {
@@ -51,6 +58,13 @@ public class Conta {
         this.saldo = saldo;
     }
 
+    // Método para imprimir um objeto
+    public void imprimirConta() {
+        System.out.println("Número da conta: " + numeroConta);
+        System.out.println("Nome do titular: " + nomeTitular);
+        System.out.println("Saldo: " + saldo);
+    }
+
     public static String getNomeDoBanco() {
         return nomeDoBanco;
     }
@@ -58,17 +72,10 @@ public class Conta {
     public static void setNomeDoBanco(String nomeDoBanco) {
         Conta.nomeDoBanco = nomeDoBanco;
     }
-    // metodo de sobercarga da toString
 
+    // Sobrecarga do método toString()
     @Override
     public String toString() {
-        return "" + numero + ", " + titular + ", " + saldo + "\n";
+        return "Número da conta: " + numeroConta + "\nNome do titular: " + nomeTitular + "\nSaldo: " + saldo;
     }
-
-    public void print() {
-        System.out.println("numero  : " + numero);
-        System.out.println("titular : " + titular);
-        System.out.println("saldo   : " + saldo);
-    }
-
 }

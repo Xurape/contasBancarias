@@ -3,53 +3,51 @@ package contasbancarias;
 
 public class ContaOrdem extends Conta {
     private double saldoMinimo;
-    private double ordenado;
+    private boolean contaOrdenado;
 
-    // construtor sem parametros
     public ContaOrdem() {
-        saldoMinimo = 0;
-        ordenado = 0;
+        super();
+        this.saldoMinimo = 0.0;
+        this.contaOrdenado = false;
     }
 
-    // construtor com parametros
-    public ContaOrdem(double saldoMinimo, double ordenado, int numero, String titular, double saldo) {
-        super(numero, titular, saldo);
+    public ContaOrdem(int numeroConta, String nomeTitular, double saldo, double saldoMinimo, boolean contaOrdenado) {
+        super(numeroConta, nomeTitular, saldo);
         this.saldoMinimo = saldoMinimo;
-        this.ordenado = ordenado;
+        this.contaOrdenado = contaOrdenado;
     }
 
-    // metodos de acesso static
-
+    // Métodos de acesso
     public double getSaldoMinimo() {
         return saldoMinimo;
     }
 
     public void setSaldoMinimo(double saldoMinimo) {
         this.saldoMinimo = saldoMinimo;
-
     }
 
-    public double getOrdenado() {
-        return ordenado;
+    public boolean isContaOrdenado() {
+        return contaOrdenado;
     }
 
-    public void setOrdenado(double ordenado) {
-        this.ordenado = ordenado;
+    public void setContaOrdenado(boolean ordenado) {
+        this.contaOrdenado = ordenado;
     }
 
-    // Sobercarga do metodo toString
+    // Sobrecarga do método toString()
     @Override
     public String toString() {
-        return "" + saldoMinimo + "," + ordenado + "\n";
+        return super.toString() + "\nSaldo Mínimo: " + saldoMinimo + "\nConta Ordenado: " + contaOrdenado;
     }
 
-    @Override
-    public void print() {
-        super.print();
-        System.out.println("SaldoMinimo : " + saldoMinimo);
-        System.out.println("Ordenado    : " + ordenado);
+    // Método para comparar o saldo mínimo de duas contas à ordem
+    public String compararSaldoMinimo(ContaOrdem outraConta) {
+        if (this.saldoMinimo > outraConta.getSaldoMinimo()) {
+            return "Maior";
+        } else if (this.saldoMinimo < outraConta.getSaldoMinimo()) {
+            return "Menor";
+        } else {
+            return "Igual";
+        }
     }
-    // public void comparaSaldoMinimo(saldoMinimo >= saldoMinimo){
-    // return saldoMinimo;
-    // }
 }
